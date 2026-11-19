@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Atlas — GTA 6 Trophy Guide &amp; Tracker</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">VA</span>
+    <div>
+      <h1>Vice Atlas</h1>
+      <p class="tagline">GTA 6 trophy guide &amp; tracker — 55 PS5 trophies, offline, night-drive edition</p>
+    </div>
+  </div>
+  <div class="progress-wrap" id="progressWrap" aria-live="polite">
+    <div class="progress-big"><span id="earnedCount">0</span><span class="of">/ 55 earned</span></div>
+    <div class="progress-bar"><div id="progressFill"></div></div>
+    <p class="progress-note" id="progressNote">Platinum: Vice Got a Price! — 0 of 54 others done</p>
+  </div>
+</header>
+<nav class="tabs" aria-label="Guide sections">
+  <a href="#tonight" data-tab="tonight" class="tab active">Tonight&rsquo;s hunt</a>
+  <a href="#list" data-tab="list" class="tab">Checklist</a>
+  <a href="#roadmap" data-tab="roadmap" class="tab">Roadmap</a>
+  <a href="#missables" data-tab="missables" class="tab">Missables</a>
+  <a href="#settings" data-tab="settings" class="tab">Save &amp; settings</a>
+</nav>
+<main>
+  <section id="view-tonight" class="view active" aria-label="Tonight's hunt planner">
+    <p class="honesty">Honesty note: GTA 6 released today. No step here has been verified in game. Every guide is built from the official trophy description and cites its sources; where a place or step is not pinned down, the guide says so.</p>
+    <div class="planner-grid">
+      <div>
+        <h2>Tonight&rsquo;s hunt — your next 5</h2>
+        <p class="muted">Next trophies in roadmap order, with chapter and missable risk. Tick one off and the next in line moves up.</p>
+        <ol id="nextFive" class="next-five"></ol>
+        <div class="planner-stats" id="plannerStats"></div>
+      </div>
+      <aside class="guide-pane" id="guidePane" aria-live="polite">
+        <h2 id="guideTitle">Pick a trophy to open its guide</h2>
+        <p class="muted">Choose any trophy in the checklist or planner. Its official name, description and grade stay on show, with the guide and its sources beside them.</p>
+      </aside>
+    </div>
+  </section>
+  <section id="view-list" class="view" aria-label="Trophy checklist">
+    <h2>Checklist — all 55 trophies</h2>
+    <div class="toolbar">
+      <label>Search <input id="searchBox" type="search" placeholder="Search name or description…"></label>
+      <label>Kind
+        <select id="kindFilter">
+          <option value="all">All kinds</option>
+          <option value="story">Story</option>
+          <option value="missable">Missable</option>
+          <option value="collectibles">Collectibles</option>
+          <option value="activities">Activities</option>
+          <option value="online">Online</option>
+        </select>
+      </label>
+      <label>Grade
+        <select id="gradeFilter">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="checkline"><input id="hideEarned" type="checkbox"> Hide earned</label>
+      <label class="checkline"><input id="spoilerToggle" type="checkbox"> Spoilers: hide story names until earned</label>
+    </div>
+    <p class="muted" id="listCount"></p>
+    <ul id="trophyList" class="trophy-list"></ul>
+  </section>
+  <section id="view-roadmap" class="view" aria-label="Roadmap to the platinum">
+    <h2>Roadmap to the platinum</h2>
+    <p class="muted">Built from the official descriptions: story first, side strands second, the long grinds third, money and 100% last. Counts are the PSN progress targets where the list tracks one.</p>
+    <ol id="roadmapList" class="roadmap"></ol>
+  </section>
+  <section id="view-missables" class="view" aria-label="Missable trophies">
+    <h2>Missables board — do these on your first pass</h2>
+    <p class="muted">“Missable” here means tied to a one-time story moment in the official description. No in-game replay check exists yet, so save before each chapter finale and each named mission, and clear this board before the final mission.</p>
+    <p class="muted"><strong id="missableCount"></strong></p>
+    <ul id="missableList" class="trophy-list"></ul>
+  </section>
+  <section id="view-settings" class="view" aria-label="Save and settings">
+    <h2>Save &amp; settings</h2>
+    <p class="muted">Progress is saved in this browser (localStorage). Export a backup file, or import one to restore it. Nothing leaves your machine.</p>
+    <div class="settings-grid">
+      <div class="card">
+        <h3>Export / import</h3>
+        <p><button id="exportBtn" type="button">Export progress (.json)</button></p>
+        <p><label>Import progress <input id="importFile" type="file" accept=".json,application/json"></label></p>
+        <p class="muted" id="importStatus">No import yet this session.</p>
+        <p><button id="resetBtn" type="button">Reset all progress</button></p>
+      </div>
+      <div class="card">
+        <h3>Notes &amp; shortcuts</h3>
+        <label>Your notes (saved with progress)<br><textarea id="notesBox" rows="5" placeholder="e.g. Save before Chapter 4 finale…"></textarea></label>
+        <p class="muted">Shortcuts: <kbd>1</kbd> Tonight &nbsp; <kbd>2</kbd> Checklist &nbsp; <kbd>3</kbd> Roadmap &nbsp; <kbd>4</kbd> Missables &nbsp; <kbd>/</kbd> search &nbsp; <kbd>s</kbd> toggle spoilers</p>
+      </div>
+      <div class="card">
+        <h3>Sources</h3>
+        <p>Official names, descriptions and grades: the official list on Exophase. PSN progress counts where one exists: PSNProfiles. Guide words are our own, from the official description only, not yet verified in game.</p>
+        <p class="muted">No Rockstar logo or official artwork is used anywhere in this guide. The look is our own.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>Vice Atlas — an unofficial, offline fan guide. GTA 6, Grand Theft Auto and Rockstar are not affiliated with this guide. 55 trophies: 1 platinum, 2 gold, 6 silver, 46 bronze.</p>
+</footer>
+</body>
+</html>
